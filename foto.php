@@ -3,30 +3,29 @@
         <meta charset="utf-8">
         <title> Сайт web-студії "Web-DECO" </title>
         <script type="text/javascript">
-           function send()
-{ 	var valid = true;
-	var elems = document.forms[0].elements;
-	for(var i=0; i<document.forms[0].length; i++){
-		if( elems[i].getAttribute('type') == 'text' ||
-			elems[i].getAttribute('type') == 'password' ||
-			elems[i].getAttribute('type') == 'email' ) {
-			if(elems[i].value == '') {
-				elems[i].style.border = '2px solid red';
-				valid = false;
-			}
-		}
-	}	
-	if(!valid) {
-		alert('Заповніть всі поля !!!');
-		return false;
-	} else 
-	{ var r = /^\w+@\w+\.\w{2,4}$/i;
-		if (!r.test(elems[2].value)) {
-			alert('Заповніть вірно E-Mail !!');
-			return false;
-	    } else return true;
-	}
-}	
+            function send()
+            {
+                var valid = true;
+                var elems = document.forms[0].elemenst;
+                for(var i=0; i<document.forms[0].length; i++)
+                {
+                    if(elems[i].getAttribite('type') == 'text'||
+                    elems[i].getAttribite('type') == 'password'||
+                    elems[i].getAttribite('type') == 'email')
+                    {
+                        if(elems[i].value == '')
+                        {
+                            elems[i].style.border = '2px solid red';
+                            valid = false;
+                        }
+                    }
+                }
+                if(!valid)
+                {
+                    alert('Заповніть всі поля!!!');
+                    return false;
+                }
+            }
         </script>
         <style>
             .shadowtext{
@@ -34,6 +33,7 @@
                 color: #210042;
                 font-size: 3em;
             }
+            .big { transform: scale(3); }
         </style>
                 <script src="js/clock1.js"></script>
                 <script>
@@ -57,7 +57,7 @@
             <a href="index.php">Головна</a>&nbsp;&nbsp;
             <a href="foto.php"> Фотографії</a>&nbsp;&nbsp;
             <a href="#"> Телефони</a>&nbsp;&nbsp;
-            <a href="log.php"> Статистка</a>&nbsp;&nbsp;
+            <a href="#"> Статистка</a>&nbsp;&nbsp;
             <a href="input.php"> Зареєстровані</a>&nbsp;&nbsp;
             </b></font>
         </td>
@@ -106,33 +106,14 @@
                 <hr>
         </td>
         <td width="70%">
-        <h1 align="center">Список зареєстрованих !</h1>	
-<table  align="center" border="1" width="80%" style='font-size:100%'>
-        <tr>
-            <td align="center"><b>Npp</b></td>
-            <td align="center"><b>Прізвище</b></td>
-            <td align="center"><b>Імя</b></td>
-            <td align="center"><b>E-Mail</b></td>
-            <td align="center"><b>Пароль</b></td>
-        </tr>
-        <?php
-        $data = file("txt/baza.txt");
-        $c=1;
-        foreach ($data as $line) {
-            $trs = explode(";", $line);
-                   echo '<tr>';
-            echo '<td>'.$c.'</td>';       
-            echo '<td>'.$trs[0].'</td>';
-            echo '<td>'.$trs[1].'</td>';
-            echo '<td>'.$trs[2].'</td>';
-            echo '<td>'.$trs[3].'</td>';
-
-                   echo '</tr>';
-                   $c++;
-            }
-        ?>
-    </table>
-
+        <h1 align="center">Фотогалерея</h1>
+  <?php 
+  $dir = "pic";
+  $files=scandir($dir);
+  for($i=2; $i<count($files); $i++) {
+  ?>  
+    <img src="<?php echo $dir; ?>/<?php echo $files[$i]; ?>" alt="Foto" width="350"  height="250" hspace="5" vspace="7" border="5" onclick="this.classList.toggle('big')" >
+  <?php } ?>  
         </font>    
         </td>
         </tr>
