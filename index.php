@@ -3,29 +3,30 @@
         <meta charset="utf-8">
         <title> Сайт web-студії "Web-DECO" </title>
         <script type="text/javascript">
-            function send()
-            {
-                var valid = true;
-                var elems = document.forms[0].elemenst;
-                for(var i=0; i<document.forms[0].length; i++)
-                {
-                    if(elems[i].getAttribite('type') == 'text'||
-                    elems[i].getAttribite('type') == 'password'||
-                    elems[i].getAttribite('type') == 'email')
-                    {
-                        if(elems[i].value == '')
-                        {
-                            elems[i].style.border = '2px solid red';
-                            valid = false;
-                        }
-                    }
-                }
-                if(!valid)
-                {
-                    alert('Заповніть всі поля!!!');
-                    return false;
-                }
-            }
+           function send()
+{ 	var valid = true;
+	var elems = document.forms[0].elements;
+	for(var i=0; i<document.forms[0].length; i++){
+		if( elems[i].getAttribute('type') == 'text' ||
+			elems[i].getAttribute('type') == 'password' ||
+			elems[i].getAttribute('type') == 'email' ) {
+			if(elems[i].value == '') {
+				elems[i].style.border = '2px solid red';
+				valid = false;
+			}
+		}
+	}	
+	if(!valid) {
+		alert('Заповніть всі поля !!!');
+		return false;
+	} else 
+	{ var r = /^\w+@\w+\.\w{2,4}$/i;
+		if (!r.test(elems[2].value)) {
+			alert('Заповніть вірно E-Mail !!');
+			return false;
+	    } else return true;
+	}
+}	
         </script>
         <style>
             .shadowtext{
@@ -57,7 +58,7 @@
             <a href="#"> Фотографії</a>&nbsp;&nbsp;
             <a href="#"> Телефони</a>&nbsp;&nbsp;
             <a href="#"> Статистка</a>&nbsp;&nbsp;
-            <a href="#"> Зареєстровані</a>&nbsp;&nbsp;
+            <a href="input.php"> Зареєстровані</a>&nbsp;&nbsp;
             </b></font>
         </td>
         </tr>
