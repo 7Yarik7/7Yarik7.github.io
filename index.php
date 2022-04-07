@@ -43,6 +43,16 @@
                 </script>
     </HEAD>
 <BODY background="images/bg.jpg">
+    <?php
+         $log_path="txt/log.txt";
+         $user_ip=getenv('REMOTE_ADDR');
+         $user_browser=getenv('HTTP_USER_AGENT');
+         $ctime=date('d/m/Y H:i:s');
+         $st="$user_ip|$user_browser|$ctime|\n";
+         $fp=fopen("txt/log.txt","a");
+         fwrite($fp,$st);
+
+    ?>
     <table border="1" align="center" cellpadding="10">
         <tr>
             <td background="images/bg-3.jpg" colspan="2" height="150" align="right">
@@ -57,7 +67,7 @@
             <a href="index.php">Головна</a>&nbsp;&nbsp;
             <a href="#"> Фотографії</a>&nbsp;&nbsp;
             <a href="#"> Телефони</a>&nbsp;&nbsp;
-            <a href="#"> Статистка</a>&nbsp;&nbsp;
+            <a href="log.php"> Статистка</a>&nbsp;&nbsp;
             <a href="input.php"> Зареєстровані</a>&nbsp;&nbsp;
             </b></font>
         </td>
