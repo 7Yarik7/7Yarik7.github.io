@@ -3,29 +3,41 @@
         <meta charset="utf-8">
         <title> Сайт web-студії "Web-DECO" </title>
         <script type="text/javascript">
-            function send()
-            {
-                var valid = true;
-                var elems = document.forms[0].elemenst;
-                for(var i=0; i<document.forms[0].length; i++)
-                {
-                    if(elems[i].getAttribite('type') == 'text'||
-                    elems[i].getAttribite('type') == 'password'||
-                    elems[i].getAttribite('type') == 'email')
-                    {
-                        if(elems[i].value == '')
-                        {
-                            elems[i].style.border = '2px solid red';
-                            valid = false;
-                        }
-                    }
-                }
-                if(!valid)
-                {
-                    alert('Заповніть всі поля!!!');
-                    return false;
-                }
-            }
+           function send()
+{ 	var valid = true;
+	var elems = document.forms[0].elements;
+	for(var i=0; i<document.forms[0].length; i++){
+		if( elems[i].getAttribute('type') == 'text' ||
+			elems[i].getAttribute('type') == 'password' ||
+			elems[i].getAttribute('type') == 'email' ) {
+			if(elems[i].value == '') {
+				elems[i].style.border = '2px solid red';
+				valid = false;
+			}
+		}
+	}	
+	if(!valid) {
+		alert('Заповніть всі поля !!!');
+		return false;
+	} else 
+	{ var r = /^\w+@\w+\.\w{2,4}$/i;
+		if (!r.test(elems[2].value)) {
+			alert('Заповніть вірно E-Mail !!');
+			return false;
+	    } else return true;
+	}
+}	
+
+window.onload = function(){
+setInterval(clockPainting, 1000);
+document.forms[0]. onmousemove = function (){ var elems = document.forms [0].elements;
+     
+    for(var i=0; i<elems.leght;i++)
+        if(elems [i].style.border =='2px solid red')
+            elems [i].style.border = '';
+         }
+}
+
         </script>
         <style>
             .shadowtext{
@@ -33,13 +45,10 @@
                 color: #210042;
                 font-size: 3em;
             }
-            .big { transform: scale(3); }
         </style>
                 <script src="js/clock1.js"></script>
                 <script>
-                    window.onload = function(){
-                        setInterval(clockPainting, 1000);
-                    }
+                   
                 </script>
     </HEAD>
 <BODY background="images/bg.jpg">
@@ -79,7 +88,7 @@
                     </font>
                     <hr>
                     <H1 align="center"><font color="green">Реєстрація</font></H1>
-                    <form action="forma.php" method="post" onsubmit="return send();">
+                    <form action="forma.php" method="post">
                     <table align="center" bgcolor="#ccc">
                         <tr>
                             <td><font color="green">Прізвище</font>: </td>
@@ -106,14 +115,38 @@
                 <hr>
         </td>
         <td width="70%">
-        <h1 align="center">Фотогалерея</h1>
-  <?php 
-  $dir = "pic";
-  $files=scandir($dir);
-  for($i=2; $i<count($files); $i++) {
-  ?>  
-    <img src="<?php echo $dir; ?>/<?php echo $files[$i]; ?>" alt="Foto" width="350"  height="250" hspace="5" vspace="7" border="5" onclick="this.classList.toggle('big')" >
-  <?php } ?>  
+        
+        <H1 align="center"><font color="green">Пошук телефонів</font></H1>
+                    <form action="tel09.php" method="post">
+                    <table align="center" bgcolor="#ccc">
+                        <tr>
+                            <td><font color="green" size="6">Номер телефона</font>: </td>
+                            <td><input type="text" size="10" maxlength="20" name="ntel"></td>
+                        </tr>
+                        <tr>
+                            <td><font color="green" size="6">Прізвище</font>: </td>
+                            <td><input type="text" size="10" maxlength="20" name="fio"></td>
+                        </tr>
+                        <tr>
+                            <td><font color="green" size="6">Номер вулиці</font>: </td>
+                            <td><input type="text" size="10" maxlength="20" name="nstr"></td>
+                        </tr>
+                        <tr>
+                            <td><font color="green" size="6">Номер будинку</font>: </td>
+                            <td><input type="text" size="10" maxlength="20" name="nbud"></td>
+                        </tr>
+                        <td><font color="green" size="6">Номерквартира</font>: </td>
+                            <td><input type="text" size="10" maxlength="20" name="nkv"></td>
+                        </tr>
+                    </table>
+                <p align="center">
+                    <input type="submit" value="Пошук">
+                    <input type="reset" value="Очистити">
+                </p>
+                </form>
+                <hr>
+
+
         </font>    
         </td>
         </tr>

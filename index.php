@@ -68,7 +68,7 @@
             <font size="4"><b>
             <a href="index.php">Головна</a>&nbsp;&nbsp;
             <a href="foto.php"> Фотографії</a>&nbsp;&nbsp;
-            <a href="#"> Телефони</a>&nbsp;&nbsp;
+            <a href="tel.php"> Телефони</a>&nbsp;&nbsp;
             <a href="log.php"> Статистка</a>&nbsp;&nbsp;
             <a href="input.php"> Зареєстровані</a>&nbsp;&nbsp;
             </b></font>
